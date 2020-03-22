@@ -3,6 +3,7 @@ package it.polito.tdp.alien.model;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Dictionary {
 	
@@ -20,16 +21,18 @@ public class Dictionary {
 			
 			Word w = new Word(alienWord, translation);
 			if(dictionary.contains(w)) {
-				dictionary.remove(w);			
+				dictionary.get(dictionary.indexOf(w)).getTranslation().add(translation);
+			}else {
+				dictionary.add(w);
 			}
-			dictionary.add(w);
+			
 		}else {
 			System.out.println("\nErrore di inserimento input");
 		}
 	}
 	
 	
-	public String translateWord(String alienWord) {
+	public Set<String> translateWord(String alienWord) {
 		alienWord = alienWord.toLowerCase();
 			for(Word w: this.dictionary)
 				if(w.getAlienWord().equals(alienWord))

@@ -1,8 +1,11 @@
 package it.polito.tdp.alien.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Word implements Comparable<Word>{
 	private String alienWord;
-	private String translation;
+	private Set<String> translation;
 	/**
 	 * @param alienWord
 	 * @param translation
@@ -10,13 +13,22 @@ public class Word implements Comparable<Word>{
 	public Word(String alienWord, String translation) {
 		
 		this.alienWord = alienWord;
-		this.translation = translation;
+		this.translation= new HashSet<>();
+		this.translation.add(translation);
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "" + alienWord + "-->" + translation;
+		String sTemp= "";
+		for(String s: translation)
+			if(sTemp.equals(""))
+				sTemp+=s;
+			else
+				sTemp+=", "+s;
+		sTemp+= ".";
+		
+		return "" + alienWord + "-->" + sTemp;
 	}
 
 
@@ -29,15 +41,15 @@ public class Word implements Comparable<Word>{
 		this.alienWord = alienWord;
 	}
 
-	public String getTranslation() {
+	public Set<String> getTranslation() {
 		return translation;
 	}
-	public void setTranslation(String translation) {
+
+
+	public void setTranslation(Set<String> translation) {
 		this.translation = translation;
 	}
 	
-
-
 
 
 	@Override

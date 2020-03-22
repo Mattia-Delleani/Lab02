@@ -30,11 +30,11 @@ public class TestAlien {
 		System.out.println("\nDimensione: " +dic.getDictionary().size() +
 				"\n" + "Stampa dizionario: \n"+ dic.getDictionary().toString());
 		
-		String trad = dic.translateWord(aw2);
-		String trad2 = dic.translateWord("ciao");
+		//String trad = dic.translateWord(aw2);
+		//String trad2 = dic.translateWord("ciao");
 		
-		System.out.printf("Traduzione %s:" + trad, aw2);
-		System.out.printf("\nTraduzione ciao:" + trad2, aw2);
+		//System.out.printf("Traduzione %s:" + trad, aw2);
+		//System.out.printf("\nTraduzione ciao:" + trad2, aw2);
 		
 		System.out.println("\nSTAMPO: \n"+ dic.toString());
 

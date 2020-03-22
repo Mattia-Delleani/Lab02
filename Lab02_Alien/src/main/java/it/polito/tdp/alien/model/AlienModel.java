@@ -1,5 +1,7 @@
 package it.polito.tdp.alien.model;
 
+import java.util.Set;
+
 public class AlienModel {
 	
 	private Dictionary dictionary;
@@ -14,8 +16,17 @@ public class AlienModel {
 		
 	}
 	public String traduciParola(String alienWord) {
-		String tradotta = dictionary.translateWord(alienWord);
-		return tradotta;
+		Set<String> tradotte= dictionary.translateWord(alienWord);
+		String sTemp= "";
+		for(String s: tradotte)
+			if(sTemp.equals(""))
+				sTemp+=s;
+			else
+				sTemp+=", "+s;
+		sTemp+= ".";
+		
+		return sTemp;
+		
 		
 	}
 	public Dictionary getDictionary() {
