@@ -1,6 +1,7 @@
 package it.polito.tdp.alien;
 
 import java.net.URL;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.alien.model.AlienModel;
@@ -48,20 +49,31 @@ public class FXMLController {
     		txtResult.setText("Errore di inserimento dati.\nPer aggiungere una parola inserire la parola aliena da aggiungere poi spazio poi traduzione (es. 'ahgs ciao').\n"
     				+ "Per ricevere la traduzione inserire esclusivamente la parola aliena.");
     	}else if(input.length == 2) {
+    		try {
     		String alienWord = input[0];
     		String translation = input[1];
     		this.model.aggiungiParola(alienWord, translation);
     		txtResult.setText(this.model.getDictionary().toString());
-    		
+    		}catch(InputMismatchException ime) {
+    			txtResult.clear();
+    			txtResult.setText("Errore di inserimento input!\n");
+    		}
     	}else if(input.length==1){
     		String alienWord = input[0];
-    		String tradotta = this.model.traduciParola(alienWord);
+    		String tradotta = null;
+    		if(alienWord.contains("?")) {
+    			tradotta = this.model.traduciWildcard(alienWord);
+    		}else {
+    			tradotta = this.model.traduciParola(alienWord);
+    		}
+    		
+    		
     		if(tradotta == null) {
     			tradotta = "Parola non presente nel dizionario, aggiungerla oppure ritenta.";
     		}
     		txtResult.setText(tradotta);
     	}
-
+    	txtInsert.clear();
     }
 
     @FXML
