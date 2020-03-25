@@ -39,7 +39,7 @@
                         <Insets left="15.0" top="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtInsert" depthTest="DISABLE" prefHeight="25.0" prefWidth="221.0" promptText="Insert the text...">
+                  <TextField fx:id="lblTesto" depthTest="DISABLE" prefHeight="25.0" prefWidth="221.0" promptText="Insert the text...">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
